@@ -32,8 +32,15 @@
 
     <dependencies>
         <!-- Dependencies -->
-    
-    
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.12.4</version> <!-- Оновіть номер версії до потрібної -->
+            <scope>test</scope>
+        </dependency>
+
+
+
         <!-- Testing dependencies-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
