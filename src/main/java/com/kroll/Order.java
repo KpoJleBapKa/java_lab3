@@ -1,13 +1,14 @@
 package com.kroll;
 
 import java.util.List;
+import java.util.Random;
 
 public class Order {
     private int orderId;
     private List<Product> products;
-    private String status;
+    private int status;
 
-    public Order(int orderId, List<Product> products, String status) {
+    public Order(int orderId, List<Product> products, int status) {
         this.orderId = orderId;
         this.products = products;
         this.status = status;
@@ -21,15 +22,13 @@ public class Order {
         return products;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public int decrementStatus() {
-        if (status.equals("В обробці")) {
-            return status.length();
+    public void decrementStatus() {
+        if (status > 0) {
+            status--;
         }
-        return 0;
     }
 }
-

@@ -12,7 +12,7 @@ public class Main {
         int orderId = 1;
         Random random = new Random();
         List<Order> orders = new ArrayList<>();
-        List<Product> availableProducts = Product.createAvailableProducts(); // Виклик методу createAvailableProducts() класу Product
+        List<Product> availableProducts = Product.createAvailableProducts();
 
         while (true) {
             System.out.println("Виберіть опцію:");
@@ -48,7 +48,7 @@ public class Main {
                     break;
                 case 4:
                     if (!cart.getProducts().isEmpty()) {
-                        Order order = new Order(orderId++, new ArrayList<>(cart.getProducts()), "В обробці");
+                        Order order = new Order(orderId++, new ArrayList<>(cart.getProducts()), 9);
                         orders.add(order);
                         System.out.println("Замовлення створено.");
                         cart.clearCart();
@@ -57,7 +57,7 @@ public class Main {
                     }
                     break;
                 case 5:
-                    displayOrderStatus(orders);
+                    checkOrderStatus(orders);
                     break;
                 case 0:
                     System.out.println("До побачення!");
@@ -67,6 +67,8 @@ public class Main {
                 default:
                     System.out.println("Невірний вибір. Спробуйте ще раз.");
             }
+
+            decrementOrderStatus(orders);
         }
     }
 
@@ -88,17 +90,21 @@ public class Main {
         return null;
     }
 
-    private static void displayOrderStatus(List<Order> orders) {
+    private static void checkOrderStatus(List<Order> orders) {
         if (orders.isEmpty()) {
             System.out.println("Замовлення не було зроблене.");
         } else {
             for (Order order : orders) {
-                int status = order.decrementStatus();
                 System.out.println("Номер замовлення: " + order.getOrderId() + ". Вміст: " + order.getProductsList() +
-                        ". Статус замовлення: " + (status > 0 ? status + " секунд" : "Готово."));
+                        ". Статус замовлення: " + (order.getStatus() > 0 ? order.getStatus() + " секунд" : "Готово."));
             }
         }
     }
 
-
+    private static void decrementOrderStatus(List<Order> orders) {
+        for (Order order : orders) {
+            order.decrementStatus();
+        }
+    }
 }
+
