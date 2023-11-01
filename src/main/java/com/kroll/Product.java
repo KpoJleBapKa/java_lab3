@@ -33,11 +33,11 @@ public class Product {
 
     public static List<Product> createAvailableProducts() {
         List<Product> availableProducts = new ArrayList<>();
-        availableProducts.add(new Product(1, "Ноутбук", 999.99));
-        availableProducts.add(new Product(2, "Смартфон", 499.99));
-        availableProducts.add(new Product(3, "Планшет", 299.99));
-        availableProducts.add(new Product(4, "Навушники", 149.99));
-        availableProducts.add(new Product(5, "Мишка", 39.99));
+        availableProducts.add(new Product(1, "Acer Predator", 999.99));
+        availableProducts.add(new Product(2, "Samsung M12", 499.99));
+        availableProducts.add(new Product(3, "Zotac RTX 2060", 299.99));
+        availableProducts.add(new Product(4, "Razer Kraken", 149.99));
+        availableProducts.add(new Product(5, "Hator Pulsar", 39.99));
         return availableProducts;
     }
 }
